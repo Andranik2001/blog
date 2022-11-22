@@ -15,7 +15,8 @@ class flightcontroller extends Controller
         // echo $flight->number;
         // }
 
-        $max = Flight::orderby('price', 'desc')->first();
-        dd($max);
+        // $max = Flight::orderby('price', 'desc')->first();
+        // dd($max);
+
     }
 }
