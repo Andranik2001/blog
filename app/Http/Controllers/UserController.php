@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -25,11 +26,18 @@ class UserController extends Controller
 
         // );
 
-        $user = Auth::user();
-        echo $user->name;
+        // $user = Auth::user();
+        // echo $user->name;
 
-        $parametr =  $request->all();
-        dd($parametr);
+        // $parametr =  $request->all();
+        // dd($parametr);
+
+        $users = User::with(['identity'])->get();
+        foreach($users as $user){
+            echo '<b>User ID</b> : ' . $user->name . '<br />';
+            echo '<b>id card</b> : ' . $user->identity?->identity_number. '<br />';
+
+        }
     }
 
     public function show($id)
